@@ -2,13 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 300px;
-    max-height: 380px;
+    width: 300px;            
     padding: 20px;
     background-color: lightgray;
-    box-sizing: content-box;
+    box-sizing: border-box;   
     border-radius: 10px;
-    
 }
 
 .card img {
@@ -33,7 +31,7 @@ main {
 }
 
 .texto-card {
-    text-align: center;
+    text-align: right;
     font-family: Arial, sans-serif;
 }   
 
