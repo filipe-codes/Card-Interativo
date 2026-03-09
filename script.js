@@ -19,8 +19,6 @@ pessoas.forEach(pessoa => {
   const foto = document.createElement("img");  
   foto.classList.add("foto-card");
   foto.src = 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-  foto.width = 300;
-  foto.height = 250;
   
   const nome = document.createElement("h2");
   nome.classList.add("titulo-card");
