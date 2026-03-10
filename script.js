@@ -1,18 +1,17 @@
 const pessoas = [
-  { nome: "Lucas Oliveira", idade: 28, cargo: "Dev Frontend", cidade: "São Paulo" },
-  { nome: "Mariana Costa", idade: 32, cargo: "Dev Backend", cidade: "Rio de Janeiro" },
-  { nome: "Rafael Souza", idade: 25, cargo: "Dev Fullstack", cidade: "Belo Horizonte" },
-  { nome: "Fernanda Lima", idade: 30, cargo: "UX Designer", cidade: "Curitiba" },
-  { nome: "Bruno Alves", idade: 35, cargo: "Dev Mobile", cidade: "Porto Alegre" },
-  { nome: "Camila Rocha", idade: 27, cargo: "Dev Frontend", cidade: "Fortaleza" },
-  { nome: "Diego Martins", idade: 31, cargo: "DevOps", cidade: "Recife" },
-  { nome: "Juliana Ferreira", idade: 29, cargo: "Data Engineer", cidade: "Salvador" },
-  { nome: "Thiago Nunes", idade: 26, cargo: "Dev Backend", cidade: "Manaus" },
-  { nome: "Patrícia Gomes", idade: 33, cargo: "Tech Lead", cidade: "Brasília" },
+  { nome: "Lucas Oliveira", idade: 28, cargo: "Dev Frontend", cidade: "São Paulo", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Mariana Costa", idade: 32, cargo: "Dev Backend", cidade: "Rio de Janeiro", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Rafael Souza", idade: 25, cargo: "Dev Fullstack", cidade: "Belo Horizonte", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Fernanda Lima", idade: 30, cargo: "UX Designer", cidade: "Curitiba", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Bruno Alves", idade: 35, cargo: "Dev Mobile", cidade: "Porto Alegre", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Camila Rocha", idade: 27, cargo: "Dev Frontend", cidade: "Fortaleza", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Diego Martins", idade: 31, cargo: "DevOps", cidade: "Recife", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Juliana Ferreira", idade: 29, cargo: "Data Engineer", cidade: "Salvador", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Thiago Nunes", idade: 26, cargo: "Dev Backend", cidade: "Manaus", seguidores: Math.floor(Math.random() * 1000) },
+  { nome: "Patrícia Gomes", idade: 33, cargo: "Tech Lead", cidade: "Brasília", seguidores: Math.floor(Math.random() * 1000) },
 ]
-
 const main = document.querySelector("main");
-pessoas.forEach(pessoa => {
+pessoas.forEach((pessoa, index )=> {
   const card = document.createElement("div");
   card.classList.add("card");
 
@@ -38,7 +37,12 @@ pessoas.forEach(pessoa => {
 
   const button = document.createElement("button");
   button.classList.add("botao-card");
-  button.textContent = "Seguir";    
+  button.textContent = "Seguir";  
+  
+  const seguidores = document.createElement("p");
+  seguidores.classList.add("texto-card");
+  seguidores.id = `seguidores-${index}`;           
+  seguidores.textContent = `Seguidores: ${pessoa.seguidores}`;
   
 
   
@@ -47,19 +51,27 @@ pessoas.forEach(pessoa => {
   card.appendChild(idade);
   card.appendChild(cargo);
   card.appendChild(cidade);
-  main.appendChild(card);
+  card.appendChild(seguidores);
   card.appendChild(button);
+  main.appendChild(card);
+  
 });
 
 const buttons = document.querySelectorAll(".botao-card");
-buttons.forEach(button => {
+buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
     if (button.textContent === "Seguir") {
       button.textContent = "Seguindo";
       button.style.backgroundColor = "#4CAF50";
+      pessoas[index].seguidores++;      
+      const seguidores = document.getElementById(`seguidores-${index}`);
+      seguidores.textContent = `Seguidores: ${pessoas[index].seguidores}`;
     } else {
       button.textContent = "Seguir";
       button.style.backgroundColor = "#008CBA";
+      pessoas[index].seguidores--; 
+      const seguidores = document.getElementById(`seguidores-${index}`);  
+      seguidores.textContent = `Seguidores: ${pessoas[index].seguidores}`;     
     }
   });
 });
