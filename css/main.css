@@ -44,3 +44,7 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.botao-remover:hover {
+    background-color: #dc3545;
+}
